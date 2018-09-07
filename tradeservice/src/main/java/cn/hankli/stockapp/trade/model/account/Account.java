@@ -1,23 +1,11 @@
-package cn.hankli.stockapp.data.account;
+package cn.hankli.stockapp.trade.model.account;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="account")
 public class Account {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	private String name;
 	
-	@Column(name = "id_no")
 	private String idNo;
 	
 	public Account() {

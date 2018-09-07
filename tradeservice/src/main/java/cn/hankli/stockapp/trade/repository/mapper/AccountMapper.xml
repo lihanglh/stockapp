@@ -1,0 +1,25 @@
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.hankli.stockapp.trade.model.account.AccountMapper">
+
+	<resultMap id="AccountResultMap" type="cn.hankli.stockapp.trade.model.account.Account">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="id_no" property="idNo" />
+	</resultMap>
+
+	<select id="findAll" resultMap="AccountResultMap">
+		select * from account order by id
+	</select>
+
+	<select id="findByIdNo" parameterType="String" resultMap="AccountResultMap">
+		select * from account where id_no = #{idNo} limit 1
+	</select>
+
+	<insert id="createAccount" parameterType="cn.hankli.stockapp.trade.model.account.Account" useGeneratedKeys="true" keyProperty="id">
+		insert into account (name, id_no) values(#{name}, #{idNo})
+	</insert>
+
+</mapper>

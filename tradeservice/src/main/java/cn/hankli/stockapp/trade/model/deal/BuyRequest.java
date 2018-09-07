@@ -1,61 +1,39 @@
-package cn.hankli.stockapp.data.deal;
+package cn.hankli.stockapp.trade.model.deal;
 
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import cn.hankli.stockapp.trade.model.account.Account;
 
-import cn.hankli.stockapp.data.account.Account;
-
-@Entity
-@Table(name = "buy_req")
 public class BuyRequest {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	private Account account;
 	
-	@Column(name="name")
-	private String stockName;
+	private String name;
 	
-	@Column(name="code")
 	private String code;
 	
-	@ManyToOne(cascade=CascadeType.ALL,optional=false)
-	@JoinColumn(name="acct_id", referencedColumnName="id")
-	private int amount;
-	
-	private Timestamp time;
-	
+	private int number;
+
 	private double price;
 	
-	public BuyRequest() {
-		
+	private Timestamp timestamp;
+
+	public Account getAccount() {
+		return account;
 	}
 
-	public long getId() {
-		return id;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public String getName() {
+		return name;
 	}
 
-	public String getStockName() {
-		return stockName;
-	}
-
-	public void setStockName(String stockName) {
-		this.stockName = stockName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCode() {
@@ -66,12 +44,12 @@ public class BuyRequest {
 		this.code = code;
 	}
 
-	public Timestamp getTime() {
-		return time;
+	public int getNumber() {
+		return number;
 	}
 
-	public void setTime(Timestamp time) {
-		this.time = time;
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
 	public double getPrice() {
@@ -82,20 +60,12 @@ public class BuyRequest {
 		this.price = price;
 	}
 
-	public Account getAccount() {
-		return account;
+	public Timestamp getTimestamp() {
+		return timestamp;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
 	}
 	
 	
